@@ -1,12 +1,6 @@
 import { useContext, useEffect } from "react";
 import MsContext from "../../MsContext";
 
-function getTimeString(dateFromGraph) {
-    const date = new Date(dateFromGraph + 'Z');
-    const minutes = date.getMinutes();
-    return `${date.getHours()}:${minutes < 10 ? '0' : ''}${minutes}`;
-}
-
 function Lunch() {
     const { graphClient } = useContext(MsContext);
 
