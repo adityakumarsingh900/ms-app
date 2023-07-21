@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import MsContext from "../../MsContext";
 import { scopes } from "../../constants";
+import "./index.css"
 
 function Auth() {
     const { msalClient, account } = useContext(MsContext);
@@ -18,14 +19,17 @@ function Auth() {
       }
 
     return (
-        <div>
+        <div className={`auth ${account?.name ? "heading" : ""}`}>
             {account 
-                ? <>
-                    <p>Logged in as {account.name}</p>
-                    <button onClick={logout}>Logout</button>
-                </>
+                ? <div className="header">
+                    <h1 className="name">Welcome back, {account.name}</h1>
+                    <button className="button logout" onClick={logout}>Logout</button>
+                </div>
                 : <>
-                    <button onClick={login}>Login</button>
+                <div className="login-container">
+                    <h3>Please login to continue,</h3>
+                    <button className="button" onClick={login}>Login</button>
+                </div>
                 </>
             }
         </div>

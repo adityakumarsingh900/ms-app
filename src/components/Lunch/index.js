@@ -31,7 +31,7 @@ function Lunch() {
           if (graphClient) loadUpcomingMeetings();
     }, [graphClient]);
     return (
-        <div>
+        <div className="lunch-container">
             Lunch
         </div>
     );
