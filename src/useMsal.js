@@ -79,6 +79,11 @@ function useMsal() {
       graphClient.api('/me/events')
   
         .post(event)
+        .then((res) => {
+          console.log("create meeting", res);
+          alert('Meeting created successfully');
+          window.location.reload();
+        })
   
     }
 

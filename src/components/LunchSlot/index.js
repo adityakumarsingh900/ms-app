@@ -84,7 +84,7 @@ function LunchSlot() {
                 <p className="text-4xl"  style={{ marginBottom: '1rem' }}>Availaible for Lunch at:</p>
                     {lunchTime.map(slot => (
                 <p>
-                        <span onClick={() => createMeetingForTime(slot)} className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20" style={{ marginBottom: '12px' }}>
+                        <span onClick={() => createMeetingForTime(slot)} className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 cursor-pointer" style={{ marginBottom: '12px' }}>
                         <span className="text-2xl">{slot}</span>
                     </span>
                 </p>
