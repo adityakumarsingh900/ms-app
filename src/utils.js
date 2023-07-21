@@ -16,8 +16,15 @@ function getCurrentDate(date) {
     return ('0' + now.getDate()).slice(-2);
 }
 
+function getTimeString(dateFromGraph) {
+    const date = new Date(dateFromGraph + 'Z');
+    const minutes = date.getMinutes();
+    return `${date.getHours()}:${minutes < 10 ? '0' : ''}${minutes}`;
+  }
+
 export {
     getCurrentYear,
     getCurrentMonth,
-    getCurrentDate
+    getCurrentDate,
+    getTimeString
 }

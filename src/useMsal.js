@@ -1,10 +1,86 @@
 import { useEffect, useState } from "react";
 import { scopes } from "./constants";
 
+// genrate random string
+const randomString = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let autoId = '';
+    for (let i = 0; i < 10; i++) {
+        autoId += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return autoId;
+}
+
 function useMsal() {
     const [msalClient, setMsalClient] = useState(null);
     const [account, setAccount] = useState(null);
     const [graphClient, setGraphClient] = useState(null);
+
+    const createMeeting = (start, end, title) => {
+
+      const event = {
+  
+        subject: title,
+  
+        body: {
+  
+          contentType: 'HTML',
+  
+          content: ''
+  
+        },
+  
+        start: {
+  
+          dateTime: start,
+  
+          timeZone: "India Standard Time"
+  
+        },
+  
+        end: {
+  
+          dateTime: end,
+  
+          timeZone: "India Standard Time"
+  
+        },
+  
+        location: {
+  
+          displayName: ''
+  
+        },
+  
+        attendees: [
+  
+          {
+  
+            emailAddress: {
+  
+              address: account.username,
+  
+              name: account.name
+  
+            },
+  
+            type: 'required'
+  
+          }
+  
+        ],
+  
+        allowNewTimeProposals: true,
+  
+        transactionId: randomString()
+  
+      };
+  
+      graphClient.api('/me/events')
+  
+        .post(event)
+  
+    }
 
     useEffect(() => {
         const { msal } = window;
@@ -52,7 +128,8 @@ function useMsal() {
       return {
         msalClient,
         account,
-        graphClient
+        graphClient,
+        createMeeting
       }
 }
 
