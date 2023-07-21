@@ -48,6 +48,7 @@ function useMsal() {
         }
       }, [account, msalClient]);
 
+      console.log('account', account);
       return {
         msalClient,
         account,
