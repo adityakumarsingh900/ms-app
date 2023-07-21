@@ -1,1 +1,1 @@
-export const scopes = ['Calendars.Read'];
+export const scopes = ['Calendars.ReadWrite'];

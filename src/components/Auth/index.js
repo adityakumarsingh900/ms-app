@@ -20,13 +20,20 @@ function Auth() {
     return (
         <div>
             {account 
-                ? <>
-                    <p>Logged in as {account.name}</p>
-                    <button onClick={logout}>Logout</button>
-                </>
-                : <>
-                    <button onClick={login}>Login</button>
-                </>
+                ? <div style={{
+                    position: 'absolute',
+                    right: '50px',
+                    bottom: '50px',
+                }}>
+                    <p>Hi, {account.name}</p>
+                    <button className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" onClick={logout}>Logout</button>
+                </div>
+                : <div className="content-center" style={{ marginTop: '10%' }}>
+                    <p className="text-8xl">Welcome here,</p>
+                    <p className="text-8xl">To Conitnue, please</p>
+                    <button className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600 text-8xl"
+ onClick={login}>Login</button>
+                </div>
             }
         </div>
     );
